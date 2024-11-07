@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Detalhes do Laboratório</h2>
+    <p><strong>Nome:</strong> {{ lab.nome }}</p>
+    <p><strong>Localização:</strong> {{ lab.localizacao }}</p>
+    <a href="{% url 'labs:lab_update' lab.pk %}" class="button">Editar</a>
+    <a href="{% url 'labs:lab_delete' lab.pk %}" class="button">Excluir</a>
+    <a href="{% url 'labs:lab_list' %}" class="button">Voltar para a lista</a>
+{% endblock %}

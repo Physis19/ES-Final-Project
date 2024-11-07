@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Laboratórios</h2>
+        <a href="{% url 'labs:lab_create' %}" class="btn btn-primary">
+            Adicionar Laboratório
+        </a>
+    </div>
+
+    <div class="grid">
+        {% for lab in labs %}
+        <div class="card">
+            <div class="card-header">
+                <h3>{{ lab.nome }}</h3>
+                <p class="text-secondary">Localização: {{ lab.localizacao }}</p>
+            </div>
+            
+            <div class="btn-group mt-2">
+                <a href="{% url 'labs:lab_detail' lab.pk %}" class="btn btn-primary">
+                    Ver
+                </a>
+                <a href="{% url 'labs:lab_update' lab.pk %}" class="btn btn-secondary">
+                    Editar
+                </a>
+                <a href="{% url 'labs:lab_delete' lab.pk %}" class="btn btn-danger">
+                    Excluir
+                </a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="alert alert-info">
+            Nenhum laboratório cadastrado.
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
